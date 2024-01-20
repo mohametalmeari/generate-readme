@@ -35,7 +35,8 @@ textarea {
   resize: none;
 }
 
-.stacks {
+.stacks,
+.keyFeatures {
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -57,4 +58,16 @@ select {
 
 .stack-groups>span {
   display: none;
+}
+
+#techName {
+  flex: 1;
+}
+
+#techLink {
+  flex: 2;
+}
+
+#keyFeature {
+  flex: 1;
 }

@@ -323,6 +323,15 @@ const showStacks = () => {
   document.getElementById("tech-list").innerHTML = groupsList;
 };
 
+const showKeyFeatures = () => {
+  let featuresList = "";
+  keyFeatures.forEach((feature) => {
+    featuresList += `<li>${feature}</li>`;
+  });
+
+  document.getElementById("keyFeatures-list").innerHTML = featuresList;
+};
+
 const autoFillInfo = () => {
   document.getElementById("fullName").value = fullName;
   document.getElementById("username").value = username;
@@ -333,6 +342,7 @@ const autoFillInfo = () => {
   document.getElementById("supportMessage").value = supportMessage;
   document.getElementById("acknowledgements").value = acknowledgements;
   showStacks();
+  showKeyFeatures();
 };
 autoFillInfo();
 
@@ -406,4 +416,23 @@ document.getElementById("remove-tech").addEventListener("click", () => {
     }
   });
   showStacks();
+});
+
+document.getElementById("add-keyFeature").addEventListener("click", () => {
+  let keyFeature = document.getElementById("keyFeature").value;
+
+  keyFeatures.push(keyFeature);
+  showKeyFeatures();
+});
+
+document.getElementById("remove-keyFeature").addEventListener("click", () => {
+  let keyFeature = document.getElementById("keyFeature").value;
+
+  keyFeatures.forEach((feature) => {
+    if (feature === keyFeature) {
+      const index = keyFeatures.indexOf(feature);
+      keyFeatures.splice(index, 1);
+    }
+  });
+  showKeyFeatures();
 });
