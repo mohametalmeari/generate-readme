@@ -94,6 +94,21 @@ const authors = [
       },
     ],
   },
+  {
+    name: "Mohamad",
+    accounts: [
+      {
+        name: "GitHub",
+        username: "mohametalmeari",
+        link: "https://github.com/mohametalmeari",
+      },
+      {
+        name: "LinkedIn",
+        username: "mohametalmeari",
+        link: "https://www.linkedin.com/in/mohamet-almeari/",
+      },
+    ],
+  },
 ];
 
 const futureFeatures = ["Upload logo", "Create UI"];
@@ -166,7 +181,7 @@ ${step.hide ? "-->" : ""}`;
       accountsString += `- ${account.name}: [@${account.username}](${account.link})\n`;
     });
     authorsString += `👤 **${author.name}**
-${accountsString}`;
+${accountsString}\n`;
   });
 
   let futureFeaturesString = "";
@@ -337,6 +352,33 @@ const showKeyFeatures = () => {
   document.getElementById("keyFeatures-list").innerHTML = featuresList;
 };
 
+const showFutureFeatures = () => {
+  let featuresList = "";
+  futureFeatures.forEach((feature) => {
+    featuresList += `<li>${feature}</li>`;
+  });
+
+  document.getElementById("futureFeatures-list").innerHTML = featuresList;
+};
+
+const showAuthors = () => {
+  let authorsList = "";
+  authors.forEach((author) => {
+    authorsList += `<li>${author.name} - GitHub:@${author.accounts[0].username} - LinkedIn:@${author.accounts[1].username}</li>`;
+  });
+
+  document.getElementById("authors-list").innerHTML = authorsList;
+};
+
+const showFAQ = () => {
+  let faqList = "";
+  faq.forEach((obj) => {
+    faqList += `<li>${obj.question} - ${obj.answer}</li>`;
+  });
+
+  document.getElementById("faq-list").innerHTML = faqList;
+};
+
 const autoFillInfo = () => {
   document.getElementById("fullName").value = fullName;
   document.getElementById("username").value = username;
@@ -348,6 +390,9 @@ const autoFillInfo = () => {
   document.getElementById("acknowledgements").value = acknowledgements;
   showStacks();
   showKeyFeatures();
+  showAuthors();
+  showFutureFeatures();
+  showFAQ();
 
   document.getElementById("prerequisitesHidden").checked =
     gettingStarted[0].hide;
@@ -517,6 +562,42 @@ document.getElementById("remove-tech").addEventListener("click", () => {
   showStacks();
 });
 
+document.getElementById("add-author").addEventListener("click", () => {
+  let authorName = document.getElementById("authorName").value;
+  let github = document.getElementById("github").value;
+  let linkedin = document.getElementById("linkedin").value;
+
+  authors.push({
+    name: authorName,
+    accounts: [
+      {
+        name: "GitHub",
+        username: github,
+        link: `https://github.com/${github}`,
+      },
+      {
+        name: "LinkedIn",
+        username: linkedin,
+        link: `https://www.linkedin.com/in/${linkedin}`,
+      },
+    ],
+  });
+
+  showAuthors();
+});
+
+document.getElementById("remove-author").addEventListener("click", () => {
+  let authorName = document.getElementById("authorName").value;
+
+  authors.forEach((author) => {
+    if (author.name === authorName) {
+      const index = authors.indexOf(author);
+      authors.splice(index, 1);
+    }
+  });
+  showAuthors();
+});
+
 document.getElementById("add-keyFeature").addEventListener("click", () => {
   let keyFeature = document.getElementById("keyFeature").value;
 
@@ -534,4 +615,48 @@ document.getElementById("remove-keyFeature").addEventListener("click", () => {
     }
   });
   showKeyFeatures();
+});
+
+document.getElementById("add-futureFeature").addEventListener("click", () => {
+  let futureFeature = document.getElementById("futureFeature").value;
+
+  futureFeatures.push(futureFeature);
+  showFutureFeatures();
+});
+
+document
+  .getElementById("remove-futureFeature")
+  .addEventListener("click", () => {
+    let futureFeature = document.getElementById("futureFeature").value;
+
+    futureFeatures.forEach((feature) => {
+      if (feature === futureFeature) {
+        const index = futureFeatures.indexOf(feature);
+        futureFeatures.splice(index, 1);
+      }
+    });
+    showFutureFeatures();
+  });
+
+document.getElementById("add-faq").addEventListener("click", () => {
+  let question = document.getElementById("question").value;
+  let answer = document.getElementById("answer").value;
+
+  faq.push({
+    question,
+    answer,
+  });
+  showFAQ();
+});
+
+document.getElementById("remove-faq").addEventListener("click", () => {
+  let question = document.getElementById("question").value;
+
+  faq.forEach((obj) => {
+    if (obj.question === question) {
+      const index = faq.indexOf(obj);
+      faq.splice(index, 1);
+    }
+  });
+  showFAQ();
 });

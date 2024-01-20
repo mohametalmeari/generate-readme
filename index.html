@@ -54,8 +54,13 @@
 
       <div>
         <ul id="keyFeatures-list"></ul>
-        <div class="keyFeatures">
-          <input type="text" id="keyFeature" placeholder="Enter key feature" />
+        <div class="features">
+          <input
+            type="text"
+            class="inputField"
+            id="keyFeature"
+            placeholder="Enter key feature"
+          />
           <button type="button" id="add-keyFeature">Add Key Feature</button>
           <button type="button" id="remove-keyFeature">
             Remove Key Feature
@@ -150,6 +155,70 @@
         <div class="gettingStartedFields">
           <textarea id="deploymentText" placeholder="Instructions"></textarea>
           <textarea id="deploymentCommands" placeholder="Commands"></textarea>
+        </div>
+      </div>
+
+      <div>
+        <ul id="authors-list"></ul>
+        <div class="authors">
+          <input
+            class="inputField"
+            type="text"
+            id="authorName"
+            placeholder="Author Name"
+          />
+          <input
+            class="inputField"
+            type="text"
+            id="github"
+            placeholder="GitHub username"
+          />
+          <input
+            class="inputField"
+            type="text"
+            id="linkedin"
+            placeholder="LinkedIn username"
+          />
+          <button type="button" id="add-author">Add Author</button>
+          <button type="button" id="remove-author">Remove Author</button>
+        </div>
+      </div>
+
+      <div>
+        <ul id="futureFeatures-list"></ul>
+        <div class="features">
+          <input
+            type="text"
+            class="inputField"
+            id="futureFeature"
+            placeholder="Enter future feature"
+          />
+          <button type="button" id="add-futureFeature">
+            Add Future Feature
+          </button>
+          <button type="button" id="remove-futureFeature">
+            Remove Future Feature
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <ul id="faq-list"></ul>
+        <div class="features">
+          <input
+            type="text"
+            class="inputField"
+            id="question"
+            placeholder="Enter a question"
+          />
+          <input
+            type="text"
+            class="inputField"
+            id="answer"
+            placeholder="Enter an answer"
+          />
+          <button type="button" id="add-faq">Add Question</button>
+          <button type="button" id="remove-faq">Remove Question</button>
         </div>
       </div>
     </form>

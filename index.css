@@ -37,8 +37,9 @@ textarea {
 }
 
 .stacks,
-.keyFeatures,
-.gettingStartedFields {
+.features,
+.gettingStartedFields,
+.authors {
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -70,6 +71,6 @@ select {
   flex: 2;
 }
 
-#keyFeature {
+.inputField {
   flex: 1;
 }
