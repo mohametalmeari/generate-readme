@@ -402,39 +402,58 @@ const fetchInfo = () => {
     "prerequisitesHidden"
   ).checked;
   gettingStarted[0].text = document.getElementById("prerequisitesText").value;
-  gettingStarted[0].commands = document
+  const commandsArray0 = document
     .getElementById("prerequisitesCommands")
     .value.split("\n");
+  if (commandsArray0[0] !== "") {
+    gettingStarted[0].commands = commandsArray0;
+  }
 
   gettingStarted[1].hide = document.getElementById("setupHidden").checked;
   gettingStarted[1].text = document.getElementById("setupText").value;
-  gettingStarted[1].commands = document
+  const commandsArray1 = document
     .getElementById("setupCommands")
     .value.split("\n");
+  if (commandsArray1[0] !== "") {
+    gettingStarted[1].commands = commandsArray1;
+  }
 
   gettingStarted[2].hide = document.getElementById("installHidden").checked;
   gettingStarted[2].text = document.getElementById("installText").value;
-  gettingStarted[2].commands = document
+  const commandsArray2 = document
     .getElementById("installCommands")
     .value.split("\n");
+  if (commandsArray2[0] !== "") {
+    gettingStarted[2].commands = commandsArray2;
+  }
 
   gettingStarted[3].hide = document.getElementById("usageHidden").checked;
   gettingStarted[3].text = document.getElementById("usageText").value;
-  gettingStarted[3].commands = document
+  const commandsArray3 = document
     .getElementById("usageCommands")
     .value.split("\n");
+  if (commandsArray3[0] !== "") {
+    gettingStarted[3].commands = commandsArray3;
+  }
 
   gettingStarted[4].hide = document.getElementById("runTestsHidden").checked;
   gettingStarted[4].text = document.getElementById("runTestsText").value;
-  gettingStarted[4].commands = document
+  const commandsArray4 = document
     .getElementById("runTestsCommands")
     .value.split("\n");
+  if (commandsArray4[0] !== "") {
+    gettingStarted[4].commands = commandsArray4;
 
-  gettingStarted[5].hide = document.getElementById("deploymentHidden").checked;
-  gettingStarted[5].text = document.getElementById("deploymentText").value;
-  gettingStarted[5].commands = document
-    .getElementById("deploymentCommands")
-    .value.split("\n");
+    gettingStarted[5].hide =
+      document.getElementById("deploymentHidden").checked;
+    gettingStarted[5].text = document.getElementById("deploymentText").value;
+    const commandsArray5 = document
+      .getElementById("deploymentCommands")
+      .value.split("\n");
+    if (commandsArray5[0] !== "") {
+      gettingStarted[5].commands = commandsArray5;
+    }
+  }
 };
 
 // Preview and Download:
