@@ -42,7 +42,7 @@ const gettingStarted = [
     title: "Prerequisites",
     text: "In order to run this project you need: Node.js, Ruby, Rails, PostgreSQL",
     commands: [],
-    hide: true,
+    hide: false,
   },
   {
     title: "Setup",
@@ -167,11 +167,13 @@ const createReadme = () => {
     getStartedString += `${step.hide ? "<!--" : ""}
 ### ${step.title}
 ${step.text}
-${step.commands.length > 0 && commandsString}
+${step.commands.length > 0 ? commandsString : ""}
 ${step.hide ? "-->" : ""}`;
-    getStartedMenuString += `${step.hide ? "<!--" : ""}
-  - [${step.title}](#${step.title.toLowerCase().replace(/ /g, "-")})
-    ${step.hide ? "-->" : ""}`;
+    getStartedMenuString += `${step.hide ? "  <!--" : ""}  - [${
+      step.title
+    }](#${step.title.toLowerCase().replace(/ /g, "-")})${
+      step.hide ? "-->" : ""
+    }\n`;
   });
 
   let authorsString = "";
@@ -452,6 +454,8 @@ const fetchInfo = () => {
     .value.split("\n");
   if (commandsArray0[0] !== "") {
     gettingStarted[0].commands = commandsArray0;
+  } else {
+    gettingStarted[0].commands = [];
   }
 
   gettingStarted[1].hide = document.getElementById("setupHidden").checked;
@@ -461,6 +465,8 @@ const fetchInfo = () => {
     .value.split("\n");
   if (commandsArray1[0] !== "") {
     gettingStarted[1].commands = commandsArray1;
+  } else {
+    gettingStarted[1].commands = [];
   }
 
   gettingStarted[2].hide = document.getElementById("installHidden").checked;
@@ -470,6 +476,8 @@ const fetchInfo = () => {
     .value.split("\n");
   if (commandsArray2[0] !== "") {
     gettingStarted[2].commands = commandsArray2;
+  } else {
+    gettingStarted[2].commands = [];
   }
 
   gettingStarted[3].hide = document.getElementById("usageHidden").checked;
@@ -479,6 +487,8 @@ const fetchInfo = () => {
     .value.split("\n");
   if (commandsArray3[0] !== "") {
     gettingStarted[3].commands = commandsArray3;
+  } else {
+    gettingStarted[3].commands = [];
   }
 
   gettingStarted[4].hide = document.getElementById("runTestsHidden").checked;
@@ -488,16 +498,18 @@ const fetchInfo = () => {
     .value.split("\n");
   if (commandsArray4[0] !== "") {
     gettingStarted[4].commands = commandsArray4;
-
-    gettingStarted[5].hide =
-      document.getElementById("deploymentHidden").checked;
-    gettingStarted[5].text = document.getElementById("deploymentText").value;
-    const commandsArray5 = document
-      .getElementById("deploymentCommands")
-      .value.split("\n");
-    if (commandsArray5[0] !== "") {
-      gettingStarted[5].commands = commandsArray5;
-    }
+  } else {
+    gettingStarted[4].commands = [];
+  }
+  gettingStarted[5].hide = document.getElementById("deploymentHidden").checked;
+  gettingStarted[5].text = document.getElementById("deploymentText").value;
+  const commandsArray5 = document
+    .getElementById("deploymentCommands")
+    .value.split("\n");
+  if (commandsArray5[0] !== "") {
+    gettingStarted[5].commands = commandsArray5;
+  } else {
+    gettingStarted[5].commands = [];
   }
 };
 
