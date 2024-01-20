@@ -13,6 +13,27 @@
     <button id="generate" type="button">Generate</button>
     <button id="preview" type="button">Preview</button>
 
+    <form>
+      <div class="general-info">
+        <input type="text" id="fullName" placeholder="Your full name" />
+        <input type="text" id="username" placeholder="Your GitHub username" />
+        <input type="text" id="projectName" placeholder="Project name" />
+        <input type="text" id="repository" placeholder="Repository name" />
+        <input type="text" id="liveDemo" placeholder="Live Demo Link" />
+      </div>
+      <div class="texts">
+        <textarea
+          id="description"
+          placeholder="Project description (ex: is a ...)"
+        ></textarea>
+        <textarea id="supportMessage" placeholder="Support Message"></textarea>
+        <textarea
+          id="acknowledgements"
+          placeholder="Acknowledgements"
+        ></textarea>
+      </div>
+    </form>
+
     <p id="readme"></p>
 
     <script src="./index.js"></script>

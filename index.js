@@ -111,15 +111,17 @@ const license = {
   link: "./LICENSE",
 };
 
-// Sections:
-let stackString = "";
-stack.forEach((group) => {
-  let techString = "";
-  group.groupStack.forEach((item) => {
-    techString += `<li><a href="${item.link}">${item.name}</a></li>`;
-  });
+let readme = "";
+const createReadme = () => {
+  // Sections:
+  let stackString = "";
+  stack.forEach((group) => {
+    let techString = "";
+    group.groupStack.forEach((item) => {
+      techString += `<li><a href="${item.link}">${item.name}</a></li>`;
+    });
 
-  stackString += `
+    stackString += `
 <details>
   <summary>${group.groupTitle}</summary>
     <ul>
@@ -127,56 +129,56 @@ stack.forEach((group) => {
     </ul>
 </details>
 `;
-});
-
-let keyFeaturesString = "";
-keyFeatures.forEach((feature) => {
-  keyFeaturesString += `- **${feature}**\n`;
-});
-
-let getStartedString = "";
-let getStartedMenuString = "";
-gettingStarted.forEach((step) => {
-  let commandsString = "```sh\n";
-  step.commands.forEach((command) => {
-    commandsString += `${command}\n`;
   });
-  commandsString += "```";
-  getStartedString += `
+
+  let keyFeaturesString = "";
+  keyFeatures.forEach((feature) => {
+    keyFeaturesString += `- **${feature}**\n`;
+  });
+
+  let getStartedString = "";
+  let getStartedMenuString = "";
+  gettingStarted.forEach((step) => {
+    let commandsString = "```sh\n";
+    step.commands.forEach((command) => {
+      commandsString += `${command}\n`;
+    });
+    commandsString += "```";
+    getStartedString += `
 ### ${step.title}
 ${step.text}
 ${step.commands.length > 0 && commandsString}
 `;
-  getStartedMenuString += `  - [${step.title}](#${step.title
-    .toLowerCase()
-    .replace(/ /g, "-")})\n`;
-});
-
-let authorsString = "";
-authors.forEach((author) => {
-  let accountsString = "";
-  author.accounts.forEach((account) => {
-    accountsString += `- ${account.name}: [@${account.username}](${account.link})\n`;
+    getStartedMenuString += `  - [${step.title}](#${step.title
+      .toLowerCase()
+      .replace(/ /g, "-")})\n`;
   });
-  authorsString += `👤 **${author.name}**
+
+  let authorsString = "";
+  authors.forEach((author) => {
+    let accountsString = "";
+    author.accounts.forEach((account) => {
+      accountsString += `- ${account.name}: [@${account.username}](${account.link})\n`;
+    });
+    authorsString += `👤 **${author.name}**
 ${accountsString}`;
-});
+  });
 
-let futureFeaturesString = "";
-futureFeatures.forEach((feature) => {
-  futureFeaturesString += `- **${feature}**\n`;
-});
+  let futureFeaturesString = "";
+  futureFeatures.forEach((feature) => {
+    futureFeaturesString += `- **${feature}**\n`;
+  });
 
-let faqString = "";
-faq.forEach((item) => {
-  faqString += `
+  let faqString = "";
+  faq.forEach((item) => {
+    faqString += `
 - **${item.question}**
   - ${item.answer}
   `;
-});
+  });
 
-// Generate README:
-let readme = `
+  // Generate README:
+  readme = `
 <a name="readme-top"></a>
 
 <div align="center">
@@ -305,9 +307,36 @@ This project is [${license.name}](${license.link}) licensed.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 `;
+};
 
-// Preview and Download:
+const autoFillInfo = () => {
+  document.getElementById("fullName").value = fullName;
+  document.getElementById("username").value = username;
+  document.getElementById("projectName").value = projectName;
+  document.getElementById("repository").value = repository;
+  document.getElementById("liveDemo").value = liveDemo;
+  document.getElementById("description").value = description;
+  document.getElementById("supportMessage").value = supportMessage;
+  document.getElementById("acknowledgements").value = acknowledgements;
+};
+autoFillInfo();
+
+const fetchInfo = () => {
+  fullName = document.getElementById("fullName").value;
+  username = document.getElementById("username").value;
+  projectName = document.getElementById("projectName").value;
+  repository = document.getElementById("repository").value;
+  liveDemo = document.getElementById("liveDemo").value;
+  description = document.getElementById("description").value;
+  supportMessage = document.getElementById("supportMessage").value;
+  acknowledgements = document.getElementById("acknowledgements").value;
+};
+
+// Preview and Download:d
 document.getElementById("generate").addEventListener("click", () => {
+  fetchInfo();
+  createReadme();
+
   const blob = new Blob([readme], { type: "text/plain" });
 
   const a = document.createElement("a");
@@ -319,5 +348,8 @@ document.getElementById("generate").addEventListener("click", () => {
 });
 
 document.getElementById("preview").addEventListener("click", () => {
+  fetchInfo();
+  createReadme();
+
   document.getElementById("readme").innerHTML = marked.parse(readme);
 });

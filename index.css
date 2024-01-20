@@ -5,3 +5,31 @@
   padding: 1rem;
   background-color: whitesmoke;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 1rem;
+}
+
+.general-info {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.texts{ 
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+input[type="text"] {
+   padding: 1rem;
+}
+textarea {
+  padding: 1rem;
+  height: 10rem;
+  resize: none;
+}
