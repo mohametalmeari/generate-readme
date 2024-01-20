@@ -42,6 +42,7 @@ const gettingStarted = [
     title: "Prerequisites",
     text: "In order to run this project you need: Node.js, Ruby, Rails, PostgreSQL",
     commands: [],
+    hide: true,
   },
   {
     title: "Setup",
@@ -50,6 +51,7 @@ const gettingStarted = [
       `cd my-folder`,
       `git clone https://github.com/${username}/${repository}.git`,
     ],
+    hide: false,
   },
   {
     title: "Install",
@@ -60,16 +62,19 @@ const gettingStarted = [
     title: "Usage",
     text: "To run the project, execute the following command:",
     commands: ["npm run dev"],
+    hide: false,
   },
   {
     title: "Run tests",
     text: "To run tests, run the following command:",
     commands: ["npm test"],
+    hide: false,
   },
   {
     title: "Deployment",
     text: "You can deploy this project using:",
     commands: ["npm run deploy"],
+    hide: false,
   },
 ];
 
@@ -144,14 +149,14 @@ const createReadme = () => {
       commandsString += `${command}\n`;
     });
     commandsString += "```";
-    getStartedString += `
+    getStartedString += `${step.hide ? "<!--" : ""}
 ### ${step.title}
 ${step.text}
 ${step.commands.length > 0 && commandsString}
-`;
-    getStartedMenuString += `  - [${step.title}](#${step.title
-      .toLowerCase()
-      .replace(/ /g, "-")})\n`;
+${step.hide ? "-->" : ""}`;
+    getStartedMenuString += `${step.hide ? "<!--" : ""}
+  - [${step.title}](#${step.title.toLowerCase().replace(/ /g, "-")})
+    ${step.hide ? "-->" : ""}`;
   });
 
   let authorsString = "";
@@ -343,6 +348,43 @@ const autoFillInfo = () => {
   document.getElementById("acknowledgements").value = acknowledgements;
   showStacks();
   showKeyFeatures();
+
+  document.getElementById("prerequisitesHidden").checked =
+    gettingStarted[0].hide;
+  document.getElementById("prerequisitesText").value = gettingStarted[0].text;
+  document.getElementById("prerequisitesCommands").value = String(
+    gettingStarted[0].commands
+  ).replace(/,/g, "\n");
+
+  document.getElementById("setupHidden").checked = gettingStarted[1].hide;
+  document.getElementById("setupText").value = gettingStarted[1].text;
+  document.getElementById("setupCommands").value = String(
+    gettingStarted[1].commands
+  ).replace(/,/g, "\n");
+
+  document.getElementById("installHidden").checked = gettingStarted[2].hide;
+  document.getElementById("installText").value = gettingStarted[2].text;
+  document.getElementById("installCommands").value = String(
+    gettingStarted[2].commands
+  ).replace(/,/g, "\n");
+
+  document.getElementById("usageHidden").checked = gettingStarted[3].hide;
+  document.getElementById("usageText").value = gettingStarted[3].text;
+  document.getElementById("usageCommands").value = String(
+    gettingStarted[3].commands
+  ).replace(/,/g, "\n");
+
+  document.getElementById("runTestsHidden").checked = gettingStarted[4].hide;
+  document.getElementById("runTestsText").value = gettingStarted[4].text;
+  document.getElementById("runTestsCommands").value = String(
+    gettingStarted[4].commands
+  ).replace(/,/g, "\n");
+
+  document.getElementById("deploymentHidden").checked = gettingStarted[5].hide;
+  document.getElementById("deploymentText").value = gettingStarted[5].text;
+  document.getElementById("deploymentCommands").value = String(
+    gettingStarted[5].commands
+  ).replace(/,/g, "\n");
 };
 autoFillInfo();
 
@@ -355,9 +397,47 @@ const fetchInfo = () => {
   description = document.getElementById("description").value;
   supportMessage = document.getElementById("supportMessage").value;
   acknowledgements = document.getElementById("acknowledgements").value;
+
+  gettingStarted[0].hide = document.getElementById(
+    "prerequisitesHidden"
+  ).checked;
+  gettingStarted[0].text = document.getElementById("prerequisitesText").value;
+  gettingStarted[0].commands = document
+    .getElementById("prerequisitesCommands")
+    .value.split("\n");
+
+  gettingStarted[1].hide = document.getElementById("setupHidden").checked;
+  gettingStarted[1].text = document.getElementById("setupText").value;
+  gettingStarted[1].commands = document
+    .getElementById("setupCommands")
+    .value.split("\n");
+
+  gettingStarted[2].hide = document.getElementById("installHidden").checked;
+  gettingStarted[2].text = document.getElementById("installText").value;
+  gettingStarted[2].commands = document
+    .getElementById("installCommands")
+    .value.split("\n");
+
+  gettingStarted[3].hide = document.getElementById("usageHidden").checked;
+  gettingStarted[3].text = document.getElementById("usageText").value;
+  gettingStarted[3].commands = document
+    .getElementById("usageCommands")
+    .value.split("\n");
+
+  gettingStarted[4].hide = document.getElementById("runTestsHidden").checked;
+  gettingStarted[4].text = document.getElementById("runTestsText").value;
+  gettingStarted[4].commands = document
+    .getElementById("runTestsCommands")
+    .value.split("\n");
+
+  gettingStarted[5].hide = document.getElementById("deploymentHidden").checked;
+  gettingStarted[5].text = document.getElementById("deploymentText").value;
+  gettingStarted[5].commands = document
+    .getElementById("deploymentCommands")
+    .value.split("\n");
 };
 
-// Preview and Download:d
+// Preview and Download:
 document.getElementById("generate").addEventListener("click", () => {
   fetchInfo();
   createReadme();

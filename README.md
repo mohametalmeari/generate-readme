@@ -100,12 +100,13 @@ Clone this repository to your desired folder:
 git clone ...
 cd ...
 ```
-
+<!-- 
 ### Install
 Install this project with:
 ```sh
 npm install
-```
+``` 
+-->
 
 ### Usage
 To run the project, execute the following command:

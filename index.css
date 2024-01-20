@@ -33,10 +33,12 @@ textarea {
   padding: 1rem;
   height: 10rem;
   resize: none;
+  flex: 1;
 }
 
 .stacks,
-.keyFeatures {
+.keyFeatures,
+.gettingStartedFields {
   display: flex;
   gap: 1rem;
   justify-content: center;

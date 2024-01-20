@@ -55,11 +55,101 @@
       <div>
         <ul id="keyFeatures-list"></ul>
         <div class="keyFeatures">
-          <input type="text" id="keyFeature" placeholder="Key feature" />
+          <input type="text" id="keyFeature" placeholder="Enter key feature" />
           <button type="button" id="add-keyFeature">Add Key Feature</button>
           <button type="button" id="remove-keyFeature">
             Remove Key Feature
           </button>
+        </div>
+      </div>
+
+      <div class="gettingStartedStep">
+        <div>
+          <h2>Prerequisites:</h2>
+          <label>
+            <input
+              type="checkbox"
+              id="prerequisitesHidden"
+              name="prerequisites"
+            />
+            Hide
+          </label>
+        </div>
+        <div class="gettingStartedFields">
+          <textarea
+            id="prerequisitesText"
+            placeholder="Instructions"
+          ></textarea>
+          <textarea
+            id="prerequisitesCommands"
+            placeholder="Commands"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="gettingStartedStep">
+        <div>
+          <h2>Setup:</h2>
+          <label>
+            <input type="checkbox" id="setupHidden" name="setup" /> Hide
+          </label>
+        </div>
+        <div class="gettingStartedFields">
+          <textarea id="setupText" placeholder="Instructions"></textarea>
+          <textarea id="setupCommands" placeholder="Commands"></textarea>
+        </div>
+      </div>
+
+      <div class="gettingStartedStep">
+        <div>
+          <h2>Install:</h2>
+          <label>
+            <input type="checkbox" id="installHidden" name="install" /> Hide
+          </label>
+        </div>
+        <div class="gettingStartedFields">
+          <textarea id="installText" placeholder="Instructions"></textarea>
+          <textarea id="installCommands" placeholder="Commands"></textarea>
+        </div>
+      </div>
+
+      <div class="gettingStartedStep">
+        <div>
+          <h2>Usage:</h2>
+          <label>
+            <input type="checkbox" id="usageHidden" name="usage" /> Hide
+          </label>
+        </div>
+        <div class="gettingStartedFields">
+          <textarea id="usageText" placeholder="Instructions"></textarea>
+          <textarea id="usageCommands" placeholder="Commands"></textarea>
+        </div>
+      </div>
+
+      <div class="gettingStartedStep">
+        <div>
+          <h2>Run tests:</h2>
+          <label>
+            <input type="checkbox" id="runTestsHidden" name="runTests" /> Hide
+          </label>
+        </div>
+        <div class="gettingStartedFields">
+          <textarea id="runTestsText" placeholder="Instructions"></textarea>
+          <textarea id="runTestsCommands" placeholder="Commands"></textarea>
+        </div>
+      </div>
+
+      <div class="gettingStartedStep">
+        <div>
+          <h2>Deployment:</h2>
+          <label>
+            <input type="checkbox" id="deploymentHidden" name="deployment" />
+            Hide
+          </label>
+        </div>
+        <div class="gettingStartedFields">
+          <textarea id="deploymentText" placeholder="Instructions"></textarea>
+          <textarea id="deploymentCommands" placeholder="Commands"></textarea>
         </div>
       </div>
     </form>
