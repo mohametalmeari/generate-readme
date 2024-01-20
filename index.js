@@ -1,5 +1,4 @@
-let readme = null;
-
+// Project Info:
 let fullName = "Mohamad AlMeari";
 let username = "mohametalmeari";
 
@@ -47,7 +46,10 @@ const gettingStarted = [
   {
     title: "Setup",
     text: "Clone this repository to your desired folder:",
-    commands: ["git clone ...", "cd ..."],
+    commands: [
+      `cd my-folder`,
+      `git clone https://github.com/${username}/${repository}.git`,
+    ],
   },
   {
     title: "Install",
@@ -109,6 +111,7 @@ const license = {
   link: "./LICENSE",
 };
 
+// Sections:
 let stackString = "";
 stack.forEach((group) => {
   let techString = "";
@@ -172,7 +175,8 @@ faq.forEach((item) => {
   `;
 });
 
-readme = `
+// Generate README:
+let readme = `
 <a name="readme-top"></a>
 
 <div align="center">
@@ -199,7 +203,7 @@ ${getStartedMenuString}
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-${faq.length > 0 && "- [❓ FAQ](#faq)"}
+${faq.length > 0 ? "- [❓ FAQ](#faq)" : ""}
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
@@ -281,16 +285,16 @@ ${acknowledgements}
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ${
-  faq.length > 0 &&
-  `
+  faq.length > 0
+    ? `
 <!-- FAQ (optional) -->
 
 ## ❓ FAQ <a name="faq"></a>
-  `
-}
 ${faqString}
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+`
+    : ""
+}
 
 <!-- LICENSE -->
 
@@ -302,6 +306,7 @@ This project is [${license.name}](${license.link}) licensed.
 
 `;
 
+// Preview and Download:
 document.getElementById("generate").addEventListener("click", () => {
   const blob = new Blob([readme], { type: "text/plain" });
 
