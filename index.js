@@ -309,6 +309,20 @@ This project is [${license.name}](${license.link}) licensed.
 `;
 };
 
+const showStacks = () => {
+  let groupsList = "";
+  stack.forEach((group) => {
+    let groupItems = "";
+    group.groupStack.forEach((item) => {
+      groupItems += `<li>${item.name} - ${item.link}</li>`;
+    });
+
+    groupsList += `<li>${group.groupTitle}<ol>${groupItems}</ol></li>`;
+  });
+
+  document.getElementById("tech-list").innerHTML = groupsList;
+};
+
 const autoFillInfo = () => {
   document.getElementById("fullName").value = fullName;
   document.getElementById("username").value = username;
@@ -318,6 +332,7 @@ const autoFillInfo = () => {
   document.getElementById("description").value = description;
   document.getElementById("supportMessage").value = supportMessage;
   document.getElementById("acknowledgements").value = acknowledgements;
+  showStacks();
 };
 autoFillInfo();
 
@@ -352,4 +367,43 @@ document.getElementById("preview").addEventListener("click", () => {
   createReadme();
 
   document.getElementById("readme").innerHTML = marked.parse(readme);
+});
+
+document.getElementById("add-tech").addEventListener("click", () => {
+  let groupTitle = document.getElementById("groupTitle").value;
+  let techName = document.getElementById("techName").value;
+  let techLink = document.getElementById("techLink").value;
+
+  const index = stack.findIndex((obj) => obj.groupTitle === groupTitle);
+  if (index === -1) {
+    stack.push({
+      groupTitle,
+      groupStack: [{ name: techName, link: techLink }],
+    });
+  } else {
+    stack[index].groupStack.push({ name: techName, link: techLink });
+  }
+
+  showStacks();
+});
+
+document.getElementById("remove-tech").addEventListener("click", () => {
+  let groupTitle = document.getElementById("groupTitle").value;
+  let techName = document.getElementById("techName").value;
+
+  stack.forEach((group) => {
+    if (group.groupTitle === groupTitle) {
+      group.groupStack.forEach((item) => {
+        if (item.name === techName) {
+          const index = group.groupStack.indexOf(item);
+          group.groupStack.splice(index, 1);
+          if (!group.groupStack.length) {
+            const groupIndex = stack.indexOf(group);
+            stack.splice(groupIndex, 1);
+          }
+        }
+      });
+    }
+  });
+  showStacks();
 });

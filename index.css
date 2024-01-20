@@ -19,17 +19,42 @@ form {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.texts{ 
+.texts {
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 input[type="text"] {
-   padding: 1rem;
+  padding: 1rem;
 }
+
 textarea {
   padding: 1rem;
   height: 10rem;
   resize: none;
+}
+
+.stacks {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 1rem;
+  background-color: tomato;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+select {
+  padding: 1rem;
+}
+
+.stack-groups>span {
+  display: none;
 }

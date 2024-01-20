@@ -32,6 +32,25 @@
           placeholder="Acknowledgements"
         ></textarea>
       </div>
+
+      <div>
+        <ul id="tech-list"></ul>
+        <div class="stacks">
+          <label class="stack-groups" for="stack-group">
+            <span>Stack type:</span>
+            <select id="groupTitle" name="fruits">
+              <option value="Client">Client</option>
+              <option value="Server">Server</option>
+              <option value="Database">Database</option>
+            </select>
+          </label>
+
+          <input type="text" id="techName" placeholder="Tech name" />
+          <input type="text" id="techLink" placeholder="Tech link" />
+          <button type="button" id="add-tech">Add Tech</button>
+          <button type="button" id="remove-tech">Remove Tech</button>
+        </div>
+      </div>
     </form>
 
     <p id="readme"></p>
